@@ -6,20 +6,26 @@ Este proyecto de análisis de datos tiene como objetivo identificar patrones en 
 
 Analizar un conjunto de datos de vuelos y sus precios con el fin de:
 
-- Entender cómo varían los precios según la anticipación de la compra.
-- Detectar diferencias significativas entre días de la semana y horarios de vuelo.
-- Comparar temporadas altas vs. temporadas bajas.
-- Predecir los mejores momentos para comprar vuelos al mejor precio.
+- Detectar diferencias significativas entre vuelos directos o escalas.
+- Predecir los mejores momentos del día para comprar vuelos al mejor precio.
+- Comparar diferencia entre tipos de billetes.
 
 ## 🧰 Tecnologías utilizadas
 
 - **Excel** 
-- **Python** Herramientas para mostrar visualmente datos (Numpy, Pandas)
+- **Python** (Numpy, Pandas)
 - **VSCode**
 
 ## 📁 Estructura del proyecto
 
 
+
+## 🕒 Timeline
+
+- Limpieza de la data completa. Arreglo de valores nulos, borrado de datos innecesarios.
+- Primeras impresiones en Excel:
+    - Diferencia muy grande entre Bussiness y Economy.
+    - No gran diferencia de precio entre diferentes horarios.
 
 ## 🚀 Objetivo final
 
