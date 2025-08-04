@@ -76,3 +76,55 @@ route_scores = df.groupby('route').agg({
     'price': 'mean'
 }).sort_values('efficiency_score', ascending=1)
 
+
+# Ordenar las rutas por efficiency_score para mostrar las mejores al principio
+route_scores_sorted = route_scores.sort_values('efficiency_score')
+
+# Gráfico de barras de las mejores rutas por 'efficiency_score'
+plt.figure(figsize=(10, 6))
+route_scores_sorted['efficiency_score'].head(10).plot(kind='barh', color='skyblue')
+plt.title('Top 10 Rutas más Convenientes (Eficiencia vs. Precio)')
+plt.xlabel('Efficiency Score (Menor = Mejor)')
+plt.ylabel('Ruta')
+plt.gca().invert_yaxis()  # Invertir el eje Y para mostrar las mejores rutas en la parte superior
+plt.tight_layout()
+plt.show()
+
+# Gráfico de barras de precio por ruta
+plt.figure(figsize=(10, 6))
+route_scores_sorted['price'].head(10).plot(kind='barh', color='salmon')
+plt.title('Top 10 Rutas más Baratas (Precio Promedio)')
+plt.xlabel('Precio Promedio')
+plt.ylabel('Ruta')
+plt.gca().invert_yaxis()
+plt.tight_layout()
+plt.show()
+
+plt.figure(figsize=(10, 6))
+df.groupby('stops_num')['efficiency_score'].mean().plot(kind='line', marker='o', color='teal')
+plt.title('Evolución del Efficiency Score según el Número de Escalas')
+plt.xlabel('Número de Escalas')
+plt.ylabel('Efficiency Score')
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+
+ordered_times = ['Early_Morning', 'Morning', 'Afternoon', 'Evening', 'Night', 'Late_Night']
+df['departure_time_ordered'] = pd.Categorical(df['departure_time'], categories=ordered_times, ordered=True)
+plt.figure(figsize=(10, 6))
+df.groupby('departure_time_ordered')['efficiency_score'].mean().plot(kind='line', marker='o', color='orange')
+plt.title('Evolución del Efficiency Score según la Hora de Salida')
+plt.xlabel('Hora de Salida')
+plt.ylabel('Efficiency Score')
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+
+plt.figure(figsize=(10, 6))
+df.groupby('days_left')['efficiency_score'].mean().plot(kind='line', marker='o', color='green')
+plt.title('Evolución del Efficiency Score según Días de Antelación')
+plt.xlabel('Días de Antelación')
+plt.ylabel('Efficiency Score')
+plt.grid(True)
+plt.tight_layout()
+plt.show()
